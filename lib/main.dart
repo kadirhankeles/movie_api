@@ -1,9 +1,22 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:movie_api/pages/home_screen.dart';
+import 'package:movie_api/providers/now_playing_provider.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(child: MyApp(),providers: [
+    ChangeNotifierProvider(create: (context) => NowPlayingProvider(),)
+  ]));
+}
+class MyScrollBehavior extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }
 
 class MyApp extends StatelessWidget {
@@ -15,6 +28,7 @@ class MyApp extends StatelessWidget {
     return ResponsiveSizer(
       builder: (context, orientation, screenType) {
         return MaterialApp(
+           scrollBehavior: MyScrollBehavior(),
           debugShowCheckedModeBanner: false,
           title: 'Responsive Sizer Example',
           theme: ThemeData(
