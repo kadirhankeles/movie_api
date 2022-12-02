@@ -11,8 +11,6 @@ import 'package:simple_gradient_text/simple_gradient_text.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
-
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -26,6 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
     nowPlayindData = Provider.of<NowPlayingProvider>(context, listen: false);
     nowPlayindData!.GetNowPlayingData();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +59,10 @@ class _HomeScreenState extends State<HomeScreen> {
             child: TopBanner(),
           ),
           Padding(
-            padding: EdgeInsets.only(left: 3.h, right: 3.h, ),
+            padding: EdgeInsets.only(
+              left: 3.h,
+              right: 3.h,
+            ),
             child: Text(
               "Trending",
               style: AppConstant().title,
@@ -76,20 +78,27 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Consumer(
                 builder: (context, NowPlayingProvider value, child) {
                   return Swiper(
-                  itemBuilder: (BuildContext context, int index) {
-                    return value.isDataLoaded==false? Container(): TrendPoster(
-                      path:
-                          'https://image.tmdb.org/t/p/original/${value.nowPlayingData!.results![index].posterPath}',
-                      radius: 25,
-                      movieName: '${value.nowPlayingData!.results![index].title}',
-                      star: value.nowPlayingData!.results![index].voteAverage!.toDouble(),
-                    );
-                  },
-                  itemCount: 10,
-                  viewportFraction: 0.77,
-                  scale: 0.9,
-                  
-                );
+                    itemBuilder: (BuildContext context, int index) {
+                      return value.isDataLoaded == false
+                          ? Container()
+                          : TrendPoster(
+                              path:
+                                  'https://image.tmdb.org/t/p/original/${value.nowPlayingData!.results![index].posterPath}',
+                              radius: 25,
+                              movieName:
+                                  '${value.nowPlayingData!.results![index].title}',
+                              star: value
+                                  .nowPlayingData!.results![index].voteAverage!
+                                  .toDouble(),
+                              movieId: value.nowPlayingData!.results![index].id!
+                                  .toInt(),
+                            );
+                    },
+                    itemCount: 10,
+                    viewportFraction: 0.77,
+                    scale: 0.9,
+                    fade: 0,
+                  );
                 },
               ),
             ),
