@@ -3,13 +3,17 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:movie_api/pages/home_screen.dart';
 import 'package:movie_api/pages/movie_screen.dart';
+import 'package:movie_api/providers/movie_provider.dart';
 import 'package:movie_api/providers/now_playing_provider.dart';
+import 'package:movie_api/providers/recommended_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 void main() {
   runApp(MultiProvider(child: MyApp(),providers: [
-    ChangeNotifierProvider(create: (context) => NowPlayingProvider(),)
+    ChangeNotifierProvider(create: (context) => NowPlayingProvider(),),
+    ChangeNotifierProvider(create: (context) => MovieProvider(),),
+    ChangeNotifierProvider(create: (context) => RecommendedProvider(),)
   ]));
 }
 class MyScrollBehavior extends MaterialScrollBehavior {

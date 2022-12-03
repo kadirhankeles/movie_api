@@ -12,6 +12,8 @@ class AppConstant{
   final movieName = GoogleFonts.lato(textStyle: TextStyle(fontSize: 28, color: Colors.white, ));
   final movieDetail = GoogleFonts.lato(textStyle: TextStyle(fontSize: 14, color: Color(0xffBCBCBC), ));
 
+  final turDecoration = BoxDecoration(color: Colors.grey.shade900, borderRadius: BorderRadius.circular(20), border: Border.all(color: Colors.white,width: .3),  );
+
   BoxDecoration ImageAndRadius(String path, double radius){
     return BoxDecoration(image: DecorationImage(image: NetworkImage(path),fit: BoxFit.cover), borderRadius: BorderRadius.circular(radius));
   }
