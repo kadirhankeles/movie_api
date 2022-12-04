@@ -15,9 +15,9 @@ class _TopBannerState extends State<TopBanner> {
     return Stack(
       children: [
         Padding(
-          padding: EdgeInsets.only(top: 4.5.h, bottom: 4.h),
+          padding: EdgeInsets.only(top: 3.h, bottom: 3.h),
           child: Container(
-            height: 25.h,
+            height: 24.h,
             width: double.infinity,
             decoration: AppConstant().ImageAndRadius(
                 "https://images.alphacoders.com/246/246473.jpg", 25),

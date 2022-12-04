@@ -221,7 +221,7 @@ class _MovieScreenState extends State<MovieScreen> {
                     width: double.infinity,
                     child: value.isDataLoaded==false? CircularProgressIndicator(): ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 6,
+                      itemCount: value.recommendedData!.results!.length,
                       itemBuilder: (context, index) {
                         return Recommended(
                           path:
