@@ -28,7 +28,7 @@ class _MoviePhotoState extends State<MoviePhoto> {
           child: IconButton(
             padding: EdgeInsets.only(right: 0.3.h),
             onPressed: () {
-            
+            Navigator.pop(context);
           }, icon: Icon(Icons.arrow_back_ios_new_rounded, size: 21,)),
         ), left: 1.h, top: 3.h,)
       ],
