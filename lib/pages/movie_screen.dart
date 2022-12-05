@@ -28,7 +28,6 @@ class _MovieScreenState extends State<MovieScreen> {
 
     recommendedData = Provider.of<RecommendedProvider>(context, listen: false);
     recommendedData!.getRecommendedData(widget.movieId.toString());
-
   }
 
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class _MovieScreenState extends State<MovieScreen> {
             Consumer(
               builder: (context, MovieProvider value, child) {
                 return value.isDataLoaded == false
-                    ? CircularProgressIndicator()
+                    ? Container()
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -153,8 +152,8 @@ class _MovieScreenState extends State<MovieScreen> {
                                                 child: Center(
                                                   child: Text(
                                                     "${value.movieData!.genres![index].name}",
-                                                    style:
-                                                        AppConstant().movieDetail,
+                                                    style: AppConstant()
+                                                        .movieDetail,
                                                   ),
                                                 ),
                                               );
@@ -195,22 +194,23 @@ class _MovieScreenState extends State<MovieScreen> {
                                 SizedBox(
                                   height: 1.5.h,
                                 ),
+                                Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 3.h, right: 3.h),
+                                  child: Text(
+                                    "Recommended Movie",
+                                    style: AppConstant().text2,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 2.h,
+                                ),
                               ],
                             ),
                           ),
                         ],
                       );
               },
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 3.h, right: 3.h),
-              child: Text(
-                "Recommended Movie",
-                style: AppConstant().text2,
-              ),
-            ),
-            SizedBox(
-              height: 2.h,
             ),
             Consumer(
               builder: (context, RecommendedProvider value, child) {
@@ -219,17 +219,24 @@ class _MovieScreenState extends State<MovieScreen> {
                   child: Container(
                     height: 19.h,
                     width: double.infinity,
-                    child: value.isDataLoaded==false? CircularProgressIndicator(): ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemCount: value.recommendedData!.results!.length,
-                      itemBuilder: (context, index) {
-                        return Recommended(
-                          path:
-                              '${value.recommendedData!.results![index].posterPath}',
-                          radius: 20, movieName: '${value.recommendedData!.results![index].originalTitle}', movieId: value.recommendedData!.results![index].id!.toInt(),
-                        );
-                      },
-                    ),
+                    child: value.isDataLoaded == false
+                        ? Container()
+                        : ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: value.recommendedData!.results!.length,
+                            itemBuilder: (context, index) {
+                              return Recommended(
+                                path:
+                                    '${value.recommendedData!.results![index].posterPath}',
+                                radius: 20,
+                                movieName:
+                                    '${value.recommendedData!.results![index].originalTitle}',
+                                movieId: value
+                                    .recommendedData!.results![index].id!
+                                    .toInt(),
+                              );
+                            },
+                          ),
                   ),
                 );
               },
