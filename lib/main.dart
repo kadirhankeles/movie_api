@@ -11,6 +11,7 @@ import 'package:movie_api/providers/now_playing_provider.dart';
 import 'package:movie_api/providers/recommended_provider.dart';
 import 'package:movie_api/providers/search_movie_provider.dart';
 import 'package:movie_api/widgets/Shimmer/homescreen_shimmer.dart';
+import 'package:movie_api/widgets/Shimmer/trending_shimmer.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
@@ -60,7 +61,7 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           title: 'Responsive Sizer Example',
           theme: ThemeData(scaffoldBackgroundColor: Color(0xff15141F)),
-          home: ShimmerHomePage(),
+          home: MyHomePage(title: "dsad"),
         );
       },
       maxTabletWidth: 900, // Optional

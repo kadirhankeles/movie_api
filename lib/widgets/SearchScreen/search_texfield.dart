@@ -22,7 +22,7 @@ class _SearchTextfieldState extends State<SearchTextfield> {
       width: double.infinity,
       child: TextField(
 
-        style: TextStyle(fontSize: 18, height: 0.15.h),
+        style: TextStyle(fontSize: 18, height: 0.15.h, color: Colors.white),
         decoration: InputDecoration(
           isDense: false,
           filled: true,

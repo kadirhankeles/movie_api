@@ -1,3 +1,4 @@
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_api/core/app_constant.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -19,6 +20,7 @@ class _TopBannerState extends State<TopBanner> {
           child: Container(
             height: 24.h,
             width: double.infinity,
+            child: ClipRRect(borderRadius:BorderRadius.circular(25), child: FancyShimmerImage(imageUrl: "https://images.alphacoders.com/246/246473.jpg", boxFit: BoxFit.cover, )),
             decoration: AppConstant().ImageAndRadius(
                 "https://images.alphacoders.com/246/246473.jpg", 25),
           ),

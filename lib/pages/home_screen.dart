@@ -4,6 +4,7 @@ import 'package:movie_api/core/app_constant.dart';
 import 'package:movie_api/providers/now_playing_provider.dart';
 import 'package:movie_api/widgets/HomeScreen/banner.dart';
 import 'package:movie_api/widgets/HomeScreen/trend_poster.dart';
+import 'package:movie_api/widgets/Shimmer/trending_shimmer.dart';
 import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -77,11 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
               width: double.infinity,
               child: Consumer(
                 builder: (context, NowPlayingProvider value, child) {
-                  return Swiper(
+                  return value.isDataLoaded==false? TrendingShimmer(): Swiper(
                     itemBuilder: (BuildContext context, int index) {
-                      return value.isDataLoaded == false
-                          ? Container()
-                          : TrendPoster(
+                      return TrendPoster(
                               path:
                                   'https://image.tmdb.org/t/p/original/${value.nowPlayingData!.results![index].posterPath}',
                               radius: 25,

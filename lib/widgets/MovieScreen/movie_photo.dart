@@ -1,3 +1,4 @@
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_api/core/app_constant.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
@@ -18,19 +19,35 @@ class _MoviePhotoState extends State<MoviePhoto> {
         Container(
           height: 38.h,
           width: double.infinity,
-          decoration: AppConstant().ImageAndRadius("https://image.tmdb.org/t/p/original/${widget.path}", 0),
+          child: FancyShimmerImage(
+            imageUrl: "https://image.tmdb.org/t/p/original/${widget.path}",
+            boxFit: BoxFit.cover,
+             shimmerBaseColor: Colors.blueAccent.withOpacity(.1),
+             shimmerHighlightColor: Colors.blueAccent.withOpacity(.02),
+          ),
+          //decoration: AppConstant().ImageAndRadius("https://image.tmdb.org/t/p/original/${widget.path}", 0),
         ),
-        Positioned(child: Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.white.withOpacity(.5),),
-          height: 5.h,
-          width: 5.h,
-
-          child: IconButton(
-            padding: EdgeInsets.only(right: 0.3.h),
-            onPressed: () {
-            Navigator.pop(context);
-          }, icon: Icon(Icons.arrow_back_ios_new_rounded, size: 21,)),
-        ), left: 1.h, top: 3.h,)
+        Positioned(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30),
+              color: Colors.white.withOpacity(.5),
+            ),
+            height: 5.h,
+            width: 5.h,
+            child: IconButton(
+                padding: EdgeInsets.only(right: 0.3.h),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  size: 21,
+                )),
+          ),
+          left: 1.h,
+          top: 3.h,
+        )
       ],
     );
   }

@@ -14,8 +14,8 @@ class _ShimmerHomePageState extends State<ShimmerHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Shimmer.fromColors(
-        baseColor: Colors.blueAccent.withOpacity(.1)!,
-        highlightColor: Colors.blueAccent.withOpacity(.02)!,
+        baseColor: Colors.blueAccent.withOpacity(.1),
+        highlightColor: Colors.blueAccent.withOpacity(.02),
         child: Column(
           children: [
             Padding(
